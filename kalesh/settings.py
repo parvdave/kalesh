@@ -100,18 +100,20 @@ DATABASES = {
     }
 }
 
+PROD_SITE_URL="https://kalesh.up.railway.app"
+SITE_URL="http://127.0.0.1:8000"
+
+
 CSRF_TRUSTED_ORIGINS = [
     'https://kalesh.up.railway.app',  # Add the Railway production domain
     'http://127.0.0.1:8000',  # Add local development domain if needed
 ]
 
-SITE_URL="http://127.0.0.1:8000"
-
 if DEBUG:
     SITE_URL="http://127.0.0.1:8000"
 
 if not DEBUG:
-    SITE_URL="https://web-production-0bb2.up.railway.app"
+    SITE_URL=PROD_SITE_URL
     DATABASES['default'] = dj_database_url.config(default=env('DATABASE_URL'))
 
 
