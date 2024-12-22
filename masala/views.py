@@ -3,6 +3,7 @@ from .forms import KaleshForm, KaleshiResponseForm
 from django.core.mail import send_mail
 from django.core.exceptions import PermissionDenied
 from .models import Kaleshi
+from django.contrib import messages
 from django.conf import settings
 
 def home_view(request):
@@ -14,6 +15,7 @@ def resolve_kalesh(request):
         if form.is_valid():
             # Send confirmation email
             form.save()
+            messages.success(request, 'Your Kalesh has been recorded. Check your respective emails to record a response.')
             return redirect('resolve-kalesh')  # Replace with your success page/view
     else:
         form = KaleshForm()
