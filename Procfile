@@ -1,1 +1,1 @@
-web: gunicorn kalesh.wsgi
+web: python manage.py migrate && gunicorn kalesh.wsgi
