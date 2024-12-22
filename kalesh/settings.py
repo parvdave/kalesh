@@ -112,7 +112,7 @@ if DEBUG:
 
 if not DEBUG:
     SITE_URL="https://web-production-0bb2.up.railway.app"
-    # DATABASES['default'] = dj_database_url.config(default=env('DATABASE_URL'))
+    DATABASES['default'] = dj_database_url.config(default=env('DATABASE_URL'))
 
 
 
