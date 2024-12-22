@@ -101,7 +101,7 @@ DATABASES = {
 }
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://web-production-0bb2.up.railway.app',  # Add the Railway production domain
+    'https://kalesh.up.railway.app',  # Add the Railway production domain
     'http://127.0.0.1:8000',  # Add local development domain if needed
 ]
 
