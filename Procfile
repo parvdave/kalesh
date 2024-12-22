@@ -1,2 +1,1 @@
-web: python manage.py migrate 
-web: gunicorn kalesh.wsgi
+web: python manage.py migrate --noinput && gunicorn kalesh.wsgi:application --timeout 120
