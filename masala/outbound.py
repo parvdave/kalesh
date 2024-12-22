@@ -2,6 +2,7 @@ from .models import Kaleshi
 from openai import OpenAI
 from django.conf import settings
 from django.core.mail import send_mail
+from django.urls import reverse
 
 client = OpenAI(api_key=settings.OPENAI_API_KEY)
 
@@ -14,10 +15,11 @@ def send_resolution_email(resolution,kaleshi_email_1,kaleshi_email_2):
     send_mail(subject, message, from_email, recipient_list)
 
 def send_email_for_kalesh(kaleshi_slug, kaleshi_email):
-
+    base_url = settings.SITE_URL
+    kaleshi_response_url = reverse('kaleshi-response-view', kwargs={'kaleshi_slug': kaleshi_slug})
         # Prepare email details
     subject = f'You\'ve been drafted to a Kalesh'
-    message = f'Welcome to Kalesh\n You can enter your response at: http://127.0.0.1:8000/kaleshi/{kaleshi_slug}/'
+    message = f'Welcome to Kalesh\n You can enter your response at: {base_url}{kaleshi_response_url}'
     from_email = settings.EMAIL_HOST_USER
     recipient_list = [kaleshi_email]  # or any other recipients
 

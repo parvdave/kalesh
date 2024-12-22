@@ -99,7 +99,19 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://web-production-0bb2.up.railway.app',  # Add the Railway production domain
+    'http://127.0.0.1:8000',  # Add local development domain if needed
+]
+
+SITE_URL="http://127.0.0.1:8000"
+
+if DEBUG:
+    SITE_URL="http://127.0.0.1:8000"
+
 if not DEBUG:
+    SITE_URL="https://web-production-0bb2.up.railway.app"
     DATABASES['default'] = dj_database_url.config()
 
 
